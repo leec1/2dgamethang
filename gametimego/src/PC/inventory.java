@@ -4,7 +4,8 @@ import java.util.*;
 public class inventory{
 
 	private HashMap<String, tuple> inventory;
-	int maxWeight,currentWeight;
+	private int maxWeight;
+	private int currentWeight;
 
 	public inventory(int strength){
 		maxWeight= (int) (68 * Math.pow(Math.E, .1*strength)) ;
@@ -13,18 +14,16 @@ public class inventory{
 	}
 
 	public void addItem(inventoryItem item){
-		tuple t = new tuple(item);
-		if(currentWeight+item.getItemWeight() <maxWeight){
+		if(currentWeight + item.getItemWeight() <= maxWeight){
+			currentWeight += item.getItemWeight();
 			tuple t = inventory.get(item.getName());
 			if(t != null){
     				t.setQuantity(t.getQuantity()+1);
-    				currentWeight+=item.getItemWeight();
-    				return;
 			}else{
-				t = new tuple(item);
-				inventory.add(item.getName(), t);
-				currentWeight+= item.getItemWeight();
+				inventory.add(item.getName(), new tuple(item));
 			}	
+		}else{
+			//Inventory Full, Item too heavy to be added to the pack
 		}
 	}
 
@@ -38,8 +37,9 @@ public class inventory{
 			}else{
 				inventory.remove(itemName.toLowerCase());
 			}
+			return item;
 		}
-		return item;
+		return null; //None of that item in the inventory
 	}
 
 	private class tuple{
