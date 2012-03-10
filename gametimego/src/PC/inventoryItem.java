@@ -1,8 +1,10 @@
 package PC;
 
+
 public abstract class inventoryItem {
 	String name;
 	int itemWeight;
+	Image img;
 	public int getItemWeight() {
 		return itemWeight;
 	}

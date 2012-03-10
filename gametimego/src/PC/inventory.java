@@ -24,6 +24,8 @@ public class inventory{
 			}	
 		}else{
 			//Inventory Full, Item too heavy to be added to the pack
+			//call draw on screen function
+			return;
 		}
 	}
 
