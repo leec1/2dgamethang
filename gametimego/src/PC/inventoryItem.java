@@ -1,5 +1,7 @@
 package PC;
 
+import org.newdawn.slick.Image;
+
 
 public abstract class inventoryItem {
 	String name;
