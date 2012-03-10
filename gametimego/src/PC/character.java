@@ -9,6 +9,7 @@ public abstract class character {
 	static final int GLOVES=3;
 	static final int BOOTS=4;
 	private inventoryItem[] armor;
+	hand rightHand,lefthand;
 	public character(String name,int str,int dex,int wis, int intl, int cha, int con){
 	    this.str=str;
 	    this.dex=dex;
@@ -18,6 +19,7 @@ public abstract class character {
 	    this.con=con;
 	    inv=new inventory(str);     
 	    armor=new inventoryItem[5];
+	    rightHand=new hand();
 	}
 	
 	public inventory getInv() {
@@ -75,6 +77,10 @@ public abstract class character {
 
 	public void useItem(String itemname){
 		inventoryItem tobeused=inv.remove(itemname);
+		
+		
+	}
+	private class hand{
 		
 		
 	}
