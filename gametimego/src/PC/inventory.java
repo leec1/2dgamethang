@@ -8,9 +8,14 @@ public class inventory{
 	private int currentWeight;
 
 	public inventory(int strength){
-		maxWeight= (int) (68 * Math.pow(Math.E, .1*strength)) ;
+		updateMaxWeight(strength);
 		currentWeight=0;
+		inventory = new HashMap<String, tuple>();
 
+	}
+	
+	public void updateMaxWeight(int strength){
+		maxWeight = (int) (68 * Math.pow(Math.E, .1*strength)) ;
 	}
 
 	public void addItem(inventoryItem item){
