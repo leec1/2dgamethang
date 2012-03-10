@@ -4,7 +4,8 @@ public abstract class character {
 	inventory inv;
 	int str,dex,wis,intl,cha,con;
 	public character(String name){
-	inv=new inventory(str);     
+	    
+		inv=new inventory(str);     
 	
 	
 	
