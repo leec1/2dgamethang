@@ -4,8 +4,8 @@ public class inventory {
 ArrayList<tuple> inventory;
 int maxWeight,currentWeight;
 public inventory(int strength){
-	
-	
+	maxWeight= (int) (68 * Math.pow(Math.E, .1*strength)) ;
+	currentWeight=0;
 	
 	
 }
