@@ -20,14 +20,14 @@ public class inventory{
 			if(t != null){
     				t.setQuantity(t.getQuantity()+1);
 			}else{
-				inventory.add(item.getName(), new tuple(item));
+				inventory.put(item.getName(), t);
 			}	
 		}else{
 			//Inventory Full, Item too heavy to be added to the pack
 		}
 	}
 
-	public inventoryItem remove(String itemName)
+	public inventoryItem remove(String itemName){
 		tuple t =inventory.get(itemName.toLowerCase());
 		if(t!=null){
 			inventoryItem item = t.getItem();
