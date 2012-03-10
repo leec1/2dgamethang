@@ -3,13 +3,15 @@ package PC;
 public abstract class character {
 	private inventory inv;
 	private int str,dex,wis,intl,cha,con;
-	static final int HEAD=0;
-	static final int CHEST=1;
-	static final int LEGS=2;
-	static final int GLOVES=3;
-	static final int BOOTS=4;
-	private inventoryItem[] armor;
+	//static final int HEAD=0;
+	//static final int CHEST=1;
+	//static final int LEGS=2;
+	//static final int GLOVES=3;
+	//static final int BOOTS=4;
+	//private inventoryItem[] armor;
+	private HashMap<String, armor> armor;
 	hand rightHand,lefthand;
+	
 	public character(String name,int str,int dex,int wis, int intl, int cha, int con){
 	    this.str=str;
 	    this.dex=dex;
@@ -17,9 +19,30 @@ public abstract class character {
 	    this.intl=intl;
 	    this.con=cha;
 	    this.con=con;
-	    inv=new inventory(str);     
-	    armor=new inventoryItem[5];
+	    inv=new inventory(str);   
+	    intializeArmor();
+	    //armor=new inventoryItem[5];
 	    rightHand=new hand();
+	}
+	
+	private void initializeArmor(){
+		armor = new HashMap<String, armor>(5);
+		armor.put("head", null);
+		armor.put("chest", null);
+		armor.put("legs", null);
+		armor.put("gloves", null);
+		armor.put("boots", null);
+	}
+	
+	public armor getArmor(String region){
+		return armor.get(region.toLowerCase());
+	}
+	
+	public armor equipArmor(String region, armor newPiece){
+		armor old = armor.get(region.toLowerCase());
+		//Check for correct armor type
+		armor.put(region.toLowerCase(), newPiece);
+		return old;
 	}
 	
 	public inventory getInv() {
